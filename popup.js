@@ -1,11 +1,21 @@
-chrome.history.search({"text":"http://google.com/search", "maxResults": 1000}, function(array){
-    console.log(JSON.stringify(array))
-    renderStatus(JSON.stringify(array))
-})
+var titlesOnly = [];
 
-function renderStatus(statusText) {
-  document.getElementById('status').textContent = statusText;
-}
+
+document.addEventListener('DOMContentLoaded', function() {
+    chrome.history.search({"text":"http://google.com/search", "maxResults": 1000}, function(array){
+       array.forEach(function(e) {
+           var regexTitle = e.title.replace(/ - Google Search/gi, "")
+           titlesOnly.push(regexTitle)
+       })
+       
+        console.log(JSON.stringify(array))
+        renderStatus(JSON.stringify(titlesOnly))
+    })
+
+    function renderStatus(statusText) {
+    document.getElementById('status').textContent = statusText;
+    }
+})
 
 
 
