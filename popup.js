@@ -16,7 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('status').textContent = statusText;
     }
 })
-
+fetch('http://localhost:3000')  
+  .then(  
+    function(response) {  
+      if (response.status !== 200) {  
+        console.log('Looks like there was a problem. Status Code: ' +  
+          response.status);  
+        return;  
+      }
+    }  
+  )  
+  .catch(function(err) {  
+    console.log('Fetch Error :-S', err);  
+  });
 
 
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
