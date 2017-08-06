@@ -8,27 +8,28 @@ document.addEventListener('DOMContentLoaded', function() {
            titlesOnly.push(regexTitle)
        })
        
-        console.log(JSON.stringify(array))
-        renderStatus(JSON.stringify(titlesOnly))
+        //console.log(JSON.stringify(array))
+        console.log(JSON.stringify(titlesOnly))
     })
+  })
 
-    function renderStatus(statusText) {
-    document.getElementById('status').textContent = statusText;
-    }
-})
-fetch('http://localhost:3000')  
-  .then(  
-    function(response) {  
-      if (response.status !== 200) {  
-        console.log('Looks like there was a problem. Status Code: ' +  
-          response.status);  
-        return;  
-      }
-    }  
-  )  
-  .catch(function(err) {  
-    console.log('Fetch Error :-S', err);  
-  });
+
+  function postData() {
+      chrome.history.search({"text":"http://google.com/search", "maxResults": 1000}, function(array){
+       array.forEach(function(e) {
+           var regexTitle = e.title.replace(/ - Google Search/gi, "")
+           titlesOnly.push(regexTitle)
+       })
+       
+        fetch('https://personality-insight.herokuapp.com/history', {
+          credentials: 'include',
+          method: 'POST',
+          body: JSON.stringify({
+            history: titlesOnly
+          })
+        })        
+    })
+  }
   
 
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
@@ -152,4 +153,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+fetch('https://personality-insight.herokuapp.com/lol', {
+  credentials: 'include',
+})  
+  .then(  
+    function(response) {  
+      if (response.status !== 200) {  
+        console.log('Looks like there was a problem. Status Code: ' +  
+          response.status);  
+        return;  
+      }
+      console.log(response)
+    }  
+  )  
+  .catch(function(err) {  
+    console.log('Fetch Error :-S', err);  
+  });
+  
+
+
+
 */

@@ -6,12 +6,32 @@
  -->
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
+    <title>Personality Insight's Helper</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
+        background: #333;
+        width:800px;
       }
+      h1 {
+        font-size: 22px;
+      }
+      h2 {
+        font-size: 20px;
+        margin: 40px auto;
+      }
+
+      p, h1, h2, h3, a {
+        color:white;
+        text-align: center;
+      }
+      p {
+        font-size: 16px;
+        text-align: left;
+      }
+
       #status {
         /* avoid an excessively wide status text */
         white-space: pre;
@@ -19,6 +39,43 @@
         overflow: hidden;
         max-width: 400px;
       }
+      .title {
+        margin: 50px auto 0 auto;
+      }
+      .disclaimer { 
+        position: relative;
+        bottom: 10px;
+        font-size:14px;
+      }
+      button {
+        background: #11939A;
+        color: white;
+        width: 105px;
+        height:39px;
+        border-radius: 6px;
+        border: none; 
+        outline: none;
+        margin: 3rem auto;
+        display: block;
+        font-size:12px;
+      }
+      button:hover {
+        background: #220E2F;
+      }
+       a:focus {
+        color:white;;
+        outline: none;
+      }
+      a:hover {
+        color:lightgrey;
+      }
+      small {
+        text-align: center;
+        margin: auto;
+        display: block;
+        color: white;
+      }
+
     </style>
 
     <!--
@@ -29,9 +86,29 @@
      -->
     <script src="popup.js"></script>
   </head>
-  <body>
-    <div id="status"></div>
-    <img id="image-result" hidden>
+  <body class="container">
+
+    <main class="row">
+      <section class="col-md-12">
+
+
+        <h1 class="title">Personaltiy Insights Chrome Extention Helper</h1>
+
+        <h2>How To Use:</h2>
+
+        <p>To send your browsing data to the Personality Insights by Kyle C R Fahey server, have open the <a href="https://personality-insight.herokuapp.com/">homepage</a></p> and in the same tab, hit the "send now" button.</p>
+
+
+        <p>Then on the homepage, hit "refresh" and then you will be able to proceed.</p>
+        
+
+        <button onClick="postData()">SEND DATA</button>
+        
+
+        <small>This site comes with no warranty or guarantee of any kind.</small>
+
+      </section>
+    <main>
   </body>
 </html>
 

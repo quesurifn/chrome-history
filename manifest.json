@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Hiatory Tracker",
+  "name": "Personality Insights Helper",
   "description": "This extention tracks your history to compliment Kyle Fahey's personality insights",
   "version": "1.0",
 
@@ -12,6 +12,8 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
-    "history"
+    "history",
+     "cookies",
+     "https://personality-insight.herokuapp.com/"
   ]
 }
